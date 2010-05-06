@@ -1,0 +1,12 @@
+<h1>Comments for <%= @feed_entry.title %></h1>
+
+<% if @comments.blank? -%>
+  No comments to show!
+<% else -%>
+<% @comments.each do |item| -%>
+  <p><%= item.user %></p>
+  <p><%= item.text %></p>
+<% end -%>
+<% end -%>
+<p><%= link_to 'Add new Comment', {:action => 'new'} %></p>
+

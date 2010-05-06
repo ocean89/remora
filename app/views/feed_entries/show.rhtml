@@ -1,0 +1,17 @@
+<%= @feed_entry.title %>
+<br>
+<br>
+<%= @feed_entry.summary %>
+<br>
+<br>
+
+<h1>Comments</h2>
+<% @feed_entry.comments.each do |c| %>
+<%= c.user %><br>
+<%= c.text %><br><br>
+<% end %>
+
+<%= link_to 'Add comment', {:controller => 'comments', :action => 'new', :feed_entry_id => @feed_entry.id} %>
+
+<%= link_to 'Back', {:action => 'index'} %>
+

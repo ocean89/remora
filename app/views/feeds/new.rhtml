@@ -1,0 +1,13 @@
+<h1>New Feed</h1>
+
+<% form_for(@feed) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :feed_url %><br />
+    <%= f.text_field :feed_url %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
