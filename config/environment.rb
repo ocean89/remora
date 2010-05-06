@@ -19,10 +19,10 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "pauldix-feedzirra", :lib => "feedzirra", :source => "http://gems.github.com"
+  config.gem "feedzirra"
   config.gem "authlogic"
-  config.gem "authlogic-oid", :lib => "authlogic_openid"
-  config.gem "ruby-openid", :lib => "openid"
+  config.gem "authlogic-oid"
+  config.gem "ruby-openid"
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
