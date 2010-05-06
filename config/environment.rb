@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "feedzirra"
   config.gem "authlogic"
-  config.gem "rack-openid"
+  config.gem 'rack-openid', :lib => 'rack/openid'
   #config.gem "authlogic-oid", :lib => "authlogic_openid"
   #config.gem "ruby-openid", :lib => "openid" 
 
