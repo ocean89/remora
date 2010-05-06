@@ -21,8 +21,8 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "feedzirra"
   config.gem "authlogic"
-  config.gem "authlogic-oid"
-  config.gem "ruby-openid"
+  config.gem "authlogic-oid", :lib => "authlogic_openid"
+  config.gem "ruby-openid", :lib => "openid" 
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
