@@ -1,21 +1,30 @@
 <html>
   <head>
-    <title>Penis</title>
+    <title>Remora</title>
     <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <div id="user_nav">
-      <% if current_user %>
-        <%= link_to "Edit Profile", edit_user_path(:current) %>
-        <%= link_to "Logout", logout_path %>
-      <% else %>
-        <%= link_to "Register", signup_path %>
-        <%= link_to "Login", login_path %>
-      <% end %>
-    </div>
-    <%= image_tag "logo.jpg", :alt => 'logo' %>
-    <p><%= link_to "Feeds", feeds_path %></p>
-    <%= yield %>
+    <center>
+      <div class="main">
+        <div id="user_nav">
+          <% if current_user %>
+            <%= link_to "Edit Profile", edit_user_path(:current) %>
+            |
+            <%= link_to "Logout", logout_path %>
+          <% else %>
+            <%= link_to "Register", signup_path %>
+            |
+            <%= link_to "Login", login_path %>
+          <% end %>
+        </div>
+        <p><%= image_tag "logo.jpg", :alt => 'logo' %></p>
+        <div class="menu">
+          <%= link_to "Feeds", feeds_path %>
+        </div>
+        <%= yield %>
+      </div>
+    </center>
   </body>
 </html>
 

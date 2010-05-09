@@ -1,8 +1,12 @@
 <h2><%= @feed.title %></h2>
-<p><%= @feed.url %></p>
-
-<h3>Feed entries</h3>
-<% @feed.feed_entries.each do |c| %>
-  <%= link_to c.title, :controller => 'feed_entries', :action => 'show', :id => c.id%><br>
-<% end %>
+<p><%= link_to @feed.url, @feed.url%></p>
+<p>Love this feed</p>
+  <h3>Feed entries</h3>
+  <% @feed.feed_entries.each do |c| %>
+  <p>
+    <div class="comment">
+      <%= link_to c.title, :controller => 'feed_entries', :action => 'show', :id => c.id%><br>
+    </div>
+    </p>
+  <% end %>
 

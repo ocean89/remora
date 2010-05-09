@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100506162025) do
+ActiveRecord::Schema.define(:version => 20100507115708) do
 
   create_table "comments", :force => true do |t|
     t.string   "user",          :null => false
@@ -17,6 +17,19 @@ ActiveRecord::Schema.define(:version => 20100506162025) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "feed_entry_id"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "feed_entries", :force => true do |t|
@@ -57,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100506162025) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
+    t.boolean  "admin",             :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "openid_identifier"
