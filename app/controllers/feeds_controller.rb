@@ -1,7 +1,6 @@
 class FeedsController < ApplicationController
   def index
     @feeds = Feed.find(:all)
-    Delayed::Job.enqueue FeedUpdater.new #temporary untill startup script is done.
   end
   def show
     @feed = Feed.find(params[:id])

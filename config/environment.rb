@@ -22,8 +22,8 @@ Rails::Initializer.run do |config|
   config.gem "feedzirra"
   config.gem "authlogic", :version => '>=0.2.1'
   config.gem 'rack-openid', :lib => 'rack/openid'
-  #config.gem "authlogic-oid", :lib => "authlogic_openid"
-  #config.gem "ruby-openid", :lib => "openid"
+  config.gem 'chronic', :version => '0.2.3'
+  config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).
