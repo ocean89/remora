@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login "/login", :controller => "user_sessions", :action => "new"
   map.logout "/logout", :controller => "user_sessions", :action => "destroy"
   map.signup "/signup", :controller => "users", :action => "new"
-  
+
   map.resources :user_sessions
   map.resources :users
   map.resources :feeds, :has_many => :feed_entries
@@ -47,8 +47,9 @@ ActionController::Routing::Routes.draw do |map|
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
   map.root :controller => 'feeds'
+  map.connect ':controller/:action'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  map.connect 'feeds/update/:id', :controller => 'feeds', :action => 'update'
+  map.connect 'feeds/update/', :controller => 'feeds', :action => 'update'
 end
 

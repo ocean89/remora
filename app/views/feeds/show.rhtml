@@ -2,7 +2,10 @@
 <p><%= link_to @feed.url, @feed.url%></p>
 <p>Love this feed</p>
   <h3>Feed entries</h3>
-  <% @feed.feed_entries.each do |c| %>
+  <% feed_entries = @feed.feed_entries
+     feed_entries.sort! {|a,b| a.published_at <=> b.published_at}
+     feed_entries.reverse!
+    feed_entries.each do |c| %>
   <p>
     <div class="comment">
       <%= link_to c.title, :controller => 'feed_entries', :action => 'show', :id => c.id%><br>
