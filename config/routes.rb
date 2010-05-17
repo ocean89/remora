@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.signup "/signup", :controller => "users", :action => "new"
 
   map.resources :user_sessions
+  map.resources :comments
+  map.resources :latest
   map.resources :users
   map.resources :feeds, :has_many => :feed_entries
   map.resources :feed_entries, :has_many => :comments

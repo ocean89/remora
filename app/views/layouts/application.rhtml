@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Remora</title>
     <%= stylesheet_link_tag 'application' %>
@@ -19,9 +19,32 @@
           <% end %>
         </div>
         <p><%= image_tag "logo.jpg", :alt => 'logo' %></p>
-        <div class="menu">
-          <%= link_to "Feeds", feeds_path %>
-        </div>
+        <p>
+        <div>
+			    <ul id='menu'>
+			      <li class="button"><%= link_to "Latest", :controller => 'latest' %></li>
+			      <li class="button"><%= link_to "Popular", root_path %></li>
+			      <li class="button"><%= link_to "Discover", root_path %></li>
+			      <li class="button"><%= link_to "Contribute", root_path %></li>
+			      <li class="button"><%= link_to "About", root_path %></li>
+			      <li class="button">
+			        <% if current_user %>
+                <%= link_to "Profile", edit_user_path(:current) %>
+              <% else %>
+                <%= link_to "Register", signup_path %>
+              <% end %>
+			      </li>
+			      <li class="button">
+			        <% if current_user %>
+                <%= link_to "Logout", logout_path %>
+              <% else %>
+                <%= link_to "Login", login_path %>
+              <% end %>
+			      </li>
+			    </ul>
+		    </div>
+        </p>
+        <p id="flash"><%= flash[:notice] %></p>
         <%= yield %>
       </div>
     </center>

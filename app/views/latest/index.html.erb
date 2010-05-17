@@ -1,0 +1,5 @@
+<div id="results">
+  <%= render :partial => "feed_entries/feed_entry", :collection => @feed_entries %>
+  <%= will_paginate @feed_entries %>
+</div>
+

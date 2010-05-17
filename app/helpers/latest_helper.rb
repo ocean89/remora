@@ -1,0 +1,2 @@
+module LatestHelper
+end

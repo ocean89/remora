@@ -4,6 +4,7 @@ class FeedsController < ApplicationController
   end
   def show
     @feed = Feed.find(params[:id])
+    @feed_entries= @feed.feed_entries.descend_by_published_at
   end
   def new
     @feed = Feed.new
@@ -16,7 +17,8 @@ class FeedsController < ApplicationController
     @feed.etag = feed.etag
     @feed.last_modified = feed.last_modified
     if @feed.save
-      render :index
+      flash[:notice] = "Feed added!"
+      redirect_to feeds_path
     else
       render :new
     end

@@ -2,28 +2,32 @@
   <div class="normal_text">
     <h2><%= @feed_entry.title %></h2>
     <p><%= @feed_entry.summary %></p>
-    <p><%= @feed_entry.guid %></p>
     <p><i><%= link_to '[Read full post]', @feed_entry.url%></i></p>
   </div>
 </p>
 <p>
   <div class="normal_text">
-    <h3><%= @feed_entry.comments.size %> Comment<%
-      if @feed_entry.comments.size > 1 || @feed_entry.comments.size == 0 %>
-      <%= "s" %><% end %></h3>
-
-    <% @feed_entry.comments.each do |c| %>
-    <p>
-      <div class="comment">
-        <p><%= c.text %></p>
-        <i>Posted by: <%= c.user %> - <%= c.created_at %></i>
-      </div>
-    </p>
-    <% end %>
+    <h3><div id="comments_count">
+      <%= pluralize(@feed_entry.comments.size, 'comment', 'comments') %>
+      </div></h3>
+    <div id="comments">
+      <%= render :partial => "comments/comment", :collection => @feed_entry.comments %>
+    </div>
   </div>
 </p>
 <% if current_user %>
-  <%= link_to 'Add comment', {:controller => 'comments', :action => 'new', :feed_entry_id => @feed_entry.id} %>
+  <% form_remote_for :comment, :url => comments_path, :html => {:id => "comment_form"} do |f| %>
+    <%= f.error_messages %>
+    <%= f.hidden_field :user, :value => current_user.username  %>
+    <%= f.hidden_field :feed_entry_id, :value => @feed_entry.id %>
+    <p>
+      <%= f.label :text %><br />
+      <%= f.text_area :text, :rows => 5 %>
+    </p>
+    <p>
+      <%= f.submit 'Create' %>
+    </p>
+  <% end %>
 |
 <% end%>
 <%= link_to 'Back', {:controller => 'feeds', :action => 'show', :id => @feed_entry.feed_id} %>

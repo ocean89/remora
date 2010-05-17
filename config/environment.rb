@@ -24,9 +24,9 @@ Rails::Initializer.run do |config|
   config.gem "rack", :version => ">=0.4"
   config.gem "ruby-openid", :lib => "openid"
   config.gem "rack-openid", :lib => 'rack/openid'
-  #config.gem 'chronic', :version => '0.2.3'
+  config.gem "searchlogic"
+  config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
   config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
-  #config.gem 'daemons' #uses: script/plugin install git://github.com/dougal/daemon_generator.git
 
 
   # Only load the plugins named here, in the order given (default is alphabetical).

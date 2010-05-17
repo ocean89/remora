@@ -1,13 +1,13 @@
 <h1>Feeds</h1>
 
 <% if @feeds.blank? -%>
-  No books to show!
+  No feeds to show!
 <% else -%>
 <% @feeds.each do |item| -%>
-  <p><%= link_to item.title, {:action => 'show', :id => item.id} %></p>
+  <p><div class="comment"><%= link_to item.title, {:action => 'show', :id => item.id} %></div></p>
 <% end -%>
 <% end -%>
 <% if admin? %>
-<p><%= link_to 'Add new Feed', {:action => 'new'} %></p>
+<p>| <%= link_to 'Add new Feed', {:action => 'new'} %> |</p>
 <% end %>
 

@@ -1,0 +1,8 @@
+<p>
+  <div class="comment">
+    <p><%= link_to feed_entry.title, feed_entry_path(feed_entry) %></p>
+    <i>Blogged <%= time_ago_in_words(feed_entry.published_at) %>
+      ago by <%= link_to feed_entry.feed.title, feed_path(feed_entry.feed) %> </i>
+  </div>
+</p>
+
