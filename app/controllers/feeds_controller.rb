@@ -5,6 +5,10 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
     @feed_entries= @feed.feed_entries.descend_by_published_at
+    respond_to do |format|
+      format.html
+      format.js {render :layout => false}
+    end
   end
   def new
     @feed = Feed.new

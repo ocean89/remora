@@ -9,7 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507115708) do
+ActiveRecord::Schema.define(:version => 20100517182812) do
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "feed_entry_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "user",          :null => false
@@ -62,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20100507115708) do
     t.integer "timestamp",  :null => false
     t.string  "server_url"
     t.string  "salt",       :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "feed_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

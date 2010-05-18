@@ -5,13 +5,21 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :admin?, :current_user
+  helper_method :admin?, :current_user, :bookmarked?
 
 
   protected
 
   def admin?
-    true
+    if current_user
+      if current_user.admin
+        return true
+      else
+        return false
+      end
+    else
+      false
+    end
   end
 
   def current_user_session

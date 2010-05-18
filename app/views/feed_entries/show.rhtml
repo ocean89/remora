@@ -3,6 +3,16 @@
     <h2><%= @feed_entry.title %></h2>
     <p><%= @feed_entry.summary %></p>
     <p><i><%= link_to '[Read full post]', @feed_entry.url%></i></p>
+    <% if current_user %>
+      <div id="bookmark_link">
+        <% if Bookmark.exists?(:feed_entry_id => @feed_entry.id, :user_id => current_user.id) %>
+          <%= link_to "Remove bookmark", remove_bookmark_path(@feed_entry.id) %>
+        <% else %>
+          <%= link_to "Bookmark", :controller => "bookmarks",
+          :action => "new", :feed_entry_id => @feed_entry.id %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </p>
 <p>
@@ -16,7 +26,7 @@
   </div>
 </p>
 <% if current_user %>
-  <% form_remote_for :comment, :url => comments_path, :html => {:id => "comment_form"} do |f| %>
+  <% form_for :comment, :url => comments_path, :html => {:id => "comment_form"} do |f| %>
     <%= f.error_messages %>
     <%= f.hidden_field :user, :value => current_user.username  %>
     <%= f.hidden_field :feed_entry_id, :value => @feed_entry.id %>
