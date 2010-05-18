@@ -6,11 +6,11 @@ class LatestController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js {
-        render :update do |page|
-          page.replace 'results', :partial => "feed_entries/feed_entry", :collection => @feed_entries
-        end
-      }
+      format.js # {
+      #         render :update do |page|
+      #           page.replace 'results', :partial => "feed_entries/feed_entry", :collection => @feed_entries
+      #         end
+      #       }
     end
 
 

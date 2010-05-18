@@ -10,12 +10,7 @@ class FeedsController < ApplicationController
     @feed = Feed.new
   end
   def create
-    @feed = Feed.new(params[:feed])
-    feed = Feedzirra::Feed.fetch_and_parse(@feed.feed_url)
-    @feed.title = feed.title
-    @feed.url = feed.url
-    @feed.etag = feed.etag
-    @feed.last_modified = feed.last_modified
+   @feed = Feed.new_feed_and_parse(params)
     if @feed.save
       flash[:notice] = "Feed added!"
       redirect_to feeds_path
